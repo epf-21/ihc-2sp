@@ -30,11 +30,12 @@ export default function HomeScreen() {
                     </View>
 
                     <View style={styles.brandRow}>
-                        <Image
+                        {/* <Image
                             source={require('../assets/images/elfec.png')}
                             style={styles.brandImage}
                             resizeMode="contain"
-                        />
+                        /> */}
+                        <Text style={styles.brandMarkText}>elfec</Text>
                         <View style={styles.statusPill}>
                             <Text style={styles.statusPillText}>Sistema de servicios</Text>
                         </View>
@@ -67,6 +68,14 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
     safeArea: {
         flex: 1,
+    },
+    brandMarkText: {
+        color: '#FFFFFF',
+        fontSize: 40,
+        lineHeight: 40,
+        fontWeight: '800',
+        fontFamily: Fonts.rounded,
+        fontStyle: 'italic',
     },
     content: {
         paddingHorizontal: 16,

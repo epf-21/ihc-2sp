@@ -31,7 +31,7 @@ export default function HomeScreen() {
 
                     <View style={styles.brandRow}>
                         <Image
-                            source={require('../../assets/images/elfec.png')}
+                            source={require('../assets/images/elfec.png')}
                             style={styles.brandImage}
                             resizeMode="contain"
                         />
@@ -49,8 +49,8 @@ export default function HomeScreen() {
                 <View style={styles.grid}>
                     {sections.map((section) => (
                         <Link key={section.slug} href={`/feature/${section.slug}`} asChild>
-                            <Pressable style={[styles.card, { backgroundColor: '#FFFFFF' }]}>
-                                <View style={[styles.cardIcon, { backgroundColor: `${section.accent}18` }]}>
+                            <Pressable style={styles.card}>
+                                <View style={styles.cardIcon}>
                                     <IconSymbol name={section.icon} size={28} color={section.accent} />
                                 </View>
                                 <Text style={styles.cardTitle}>{section.title}</Text>
@@ -125,15 +125,6 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start',
         marginTop: 6,
     },
-    brand: {
-        color: '#FFFFFF',
-        fontSize: 42,
-        lineHeight: 42,
-        fontWeight: '800',
-        fontFamily: Fonts.rounded,
-        fontStyle: 'italic',
-        letterSpacing: 0.5,
-    },
     brandImage: {
         width: 120,
         height: 32,
@@ -149,42 +140,6 @@ const styles = StyleSheet.create({
         fontSize: 12,
         fontWeight: '700',
         letterSpacing: 0.3,
-    },
-    heroTitle: {
-        color: '#FFFFFF',
-        fontSize: 31,
-        lineHeight: 35,
-        fontWeight: '700',
-        maxWidth: 320,
-        fontFamily: Fonts.rounded,
-    },
-    heroSubtitle: {
-        color: 'rgba(255,255,255,0.88)',
-        fontSize: 15,
-        lineHeight: 22,
-        maxWidth: 330,
-    },
-    principlesRow: {
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        gap: 10,
-    },
-    principleChip: {
-        flexBasis: '48%',
-        backgroundColor: 'rgba(255,255,255,0.12)',
-        borderRadius: 18,
-        paddingHorizontal: 12,
-        paddingVertical: 10,
-    },
-    principleLabel: {
-        color: '#FFFFFF',
-        fontSize: 13,
-        fontWeight: '700',
-    },
-    principleValue: {
-        color: 'rgba(255,255,255,0.82)',
-        fontSize: 12,
-        marginTop: 2,
     },
     sectionHeader: {
         gap: 4,
@@ -205,6 +160,7 @@ const styles = StyleSheet.create({
         gap: 12,
     },
     card: {
+        backgroundColor: '#FFF',
         width: '48%',
         minHeight: 168,
         borderRadius: 24,
@@ -222,6 +178,7 @@ const styles = StyleSheet.create({
         borderRadius: 18,
         alignItems: 'center',
         justifyContent: 'center',
+        backgroundColor: '#F5FBFD',
     },
     cardTitle: {
         color: '#17323D',
@@ -234,38 +191,5 @@ const styles = StyleSheet.create({
         color: '#5D7681',
         fontSize: 13,
         lineHeight: 18,
-    },
-    analysisBlock: {
-        gap: 12,
-        paddingBottom: 4,
-    },
-    analysisHeader: {
-        gap: 4,
-    },
-    analysisGrid: {
-        gap: 10,
-    },
-    analysisCard: {
-        backgroundColor: '#FFFFFF',
-        borderRadius: 20,
-        padding: 16,
-        shadowColor: '#0A2430',
-        shadowOpacity: 0.05,
-        shadowRadius: 12,
-        shadowOffset: { width: 0, height: 6 },
-        elevation: 2,
-    },
-    analysisLabel: {
-        color: '#0B6D88',
-        fontSize: 15,
-        lineHeight: 20,
-        fontWeight: '800',
-        fontFamily: Fonts.rounded,
-    },
-    analysisValue: {
-        color: '#54717D',
-        fontSize: 14,
-        lineHeight: 20,
-        marginTop: 4,
     },
 });

@@ -25,7 +25,7 @@ export const sections: ElfecSection[] = [
         title: 'Factura / Preaviso',
         subtitle: 'Revisa tus documentos y avisos',
         icon: 'doc.text.fill',
-        accent: '#145D6D',
+        accent: '#0B6D88',
         description: 'Se prioriza la lectura del estado de facturacion y la recuperacion rapida de datos.',
     },
     {
@@ -33,7 +33,7 @@ export const sections: ElfecSection[] = [
         title: 'Reclamos',
         subtitle: 'Registro y seguimiento de solicitudes',
         icon: 'exclamationmark.circle.fill',
-        accent: '#1D7F96',
+        accent: '#0B6D88',
         description: 'Canal de resolucion con jerarquia clara para evitar errores de interpretacion.',
     },
     {
@@ -41,7 +41,7 @@ export const sections: ElfecSection[] = [
         title: 'Notificaciones',
         subtitle: 'Alertas, recordatorios y novedades',
         icon: 'bell.fill',
-        accent: '#0F8AB0',
+        accent: '#0B6D88',
         description: 'Mensajes visibles y consistentes para reforzar la lectura de eventos importantes.',
     },
     {
@@ -49,7 +49,7 @@ export const sections: ElfecSection[] = [
         title: 'Servicios de ubicacion',
         subtitle: 'Puntos de atencion y mapas',
         icon: 'map.fill',
-        accent: '#11647E',
+        accent: '#0B6D88',
         description: 'Esta seccion se deja como referencia para la siguiente iteracion del redisenio.',
     },
     {
@@ -57,7 +57,7 @@ export const sections: ElfecSection[] = [
         title: 'Electrolineas',
         subtitle: 'Canales de contacto rapido',
         icon: 'bolt.fill',
-        accent: '#0A728D',
+        accent: '#0B6D88',
         description: 'Un acceso para resolver dudas por canal directo con soporte visible.',
     },
 ];

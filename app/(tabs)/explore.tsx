@@ -1,112 +1,214 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { Link } from 'expo-router';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { Collapsible } from '@/components/ui/collapsible';
-import { ExternalLink } from '@/components/external-link';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
 import { IconSymbol } from '@/components/ui/icon-symbol';
-import { Fonts } from '@/constants/theme';
+import { Colors, Fonts } from '@/constants/theme';
+import { useColorScheme } from '@/hooks/use-color-scheme';
 
-export default function TabTwoScreen() {
-  return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
-      headerImage={
-        <IconSymbol
-          size={310}
-          color="#808080"
-          name="chevron.left.forwardslash.chevron.right"
-          style={styles.headerImage}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText
-          type="title"
-          style={{
-            fontFamily: Fonts.rounded,
-          }}>
-          Explore
-        </ThemedText>
-      </ThemedView>
-      <ThemedText>This app includes example code to help you get started.</ThemedText>
-      <Collapsible title="File-based routing">
-        <ThemedText>
-          This app has two screens:{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/explore.tsx</ThemedText>
-        </ThemedText>
-        <ThemedText>
-          The layout file in <ThemedText type="defaultSemiBold">app/(tabs)/_layout.tsx</ThemedText>{' '}
-          sets up the tab navigator.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/router/introduction">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Android, iOS, and web support">
-        <ThemedText>
-          You can open this project on Android, iOS, and the web. To open the web version, press{' '}
-          <ThemedText type="defaultSemiBold">w</ThemedText> in the terminal running this project.
-        </ThemedText>
-      </Collapsible>
-      <Collapsible title="Images">
-        <ThemedText>
-          For static images, you can use the <ThemedText type="defaultSemiBold">@2x</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">@3x</ThemedText> suffixes to provide files for
-          different screen densities
-        </ThemedText>
-        <Image
-          source={require('@/assets/images/react-logo.png')}
-          style={{ width: 100, height: 100, alignSelf: 'center' }}
-        />
-        <ExternalLink href="https://reactnative.dev/docs/images">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Light and dark mode components">
-        <ThemedText>
-          This template has light and dark mode support. The{' '}
-          <ThemedText type="defaultSemiBold">useColorScheme()</ThemedText> hook lets you inspect
-          what the user&apos;s current color scheme is, and so you can adjust UI colors accordingly.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/develop/user-interface/color-themes/">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Animations">
-        <ThemedText>
-          This template includes an example of an animated component. The{' '}
-          <ThemedText type="defaultSemiBold">components/HelloWave.tsx</ThemedText> component uses
-          the powerful{' '}
-          <ThemedText type="defaultSemiBold" style={{ fontFamily: Fonts.mono }}>
-            react-native-reanimated
-          </ThemedText>{' '}
-          library to create a waving hand animation.
-        </ThemedText>
-        {Platform.select({
-          ios: (
-            <ThemedText>
-              The <ThemedText type="defaultSemiBold">components/ParallaxScrollView.tsx</ThemedText>{' '}
-              component provides a parallax effect for the header image.
-            </ThemedText>
-          ),
-        })}
-      </Collapsible>
-    </ParallaxScrollView>
-  );
+export default function LocationScreen() {
+    const colorScheme = useColorScheme() ?? 'light';
+    const palette = Colors[colorScheme];
+    const quickData = [
+        { label: 'Estado', value: 'En pausa' },
+        { label: 'Mapa', value: 'Próxima iteración' },
+        { label: 'Puntos de atención', value: 'Próxima iteración' },
+    ];
+
+    return (
+        <SafeAreaView style={[styles.safeArea, { backgroundColor: palette.background }]}>
+            <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
+                <View style={[styles.header, { backgroundColor: palette.tint }]}>
+                    <View style={styles.headerTop}>
+                        <View style={styles.headerBadge}>
+                            <IconSymbol name="map.fill" size={18} color="#FFFFFF" />
+                            <Text style={styles.headerBadgeText}>Mapas y ubicacion</Text>
+                        </View>
+                        <View style={styles.headerBadgeSoft}>
+                            <Text style={styles.headerBadgeSoftText}>En pausa</Text>
+                        </View>
+                    </View>
+
+                    <Text style={styles.headerTitle}>Seccion reservada para mapas</Text>
+                    <Text style={styles.headerSubtitle}>
+                        Por ahora se mantiene como punto de referencia visual para la siguiente iteracion.
+                    </Text>
+                </View>
+
+                <View style={styles.mapFrame}>
+                    <View style={styles.mapGrid} />
+                    <View style={styles.mapPin}>
+                        <IconSymbol name="map.fill" size={22} color="#0B6D88" />
+                    </View>
+                    <Text style={styles.mapTitle}>Ubicacion, puntos de atencion y rutas</Text>
+                    <Text style={styles.mapText}>
+                        La interfaz deja esta experiencia sin funcionalidad activa mientras se trabaja el resto
+                        del redisenio.
+                    </Text>
+                </View>
+
+                <View style={styles.summaryCard}>
+                    {quickData.map((item) => (
+                        <View key={item.label} style={styles.summaryItem}>
+                            <Text style={styles.summaryLabel}>{item.label}</Text>
+                            <Text style={styles.summaryText}>{item.value}</Text>
+                        </View>
+                    ))}
+                </View>
+
+                <Link href="/feature/ubicacion" asChild>
+                    <Pressable style={styles.primaryAction}>
+                        <Text style={styles.primaryActionText}>Ver tarjeta detallada</Text>
+                        <IconSymbol name="arrow.right" size={18} color="#FFFFFF" />
+                    </Pressable>
+                </Link>
+            </ScrollView>
+        </SafeAreaView>
+    );
 }
 
 const styles = StyleSheet.create({
-  headerImage: {
-    color: '#808080',
-    bottom: -90,
-    left: -35,
-    position: 'absolute',
-  },
-  titleContainer: {
-    flexDirection: 'row',
-    gap: 8,
-  },
+    safeArea: {
+        flex: 1,
+    },
+    content: {
+        paddingHorizontal: 16,
+        paddingBottom: 24,
+        gap: 16,
+    },
+    header: {
+        borderRadius: 28,
+        padding: 18,
+        minHeight: 220,
+        justifyContent: 'space-between',
+    },
+    headerTop: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        gap: 12,
+    },
+    headerBadge: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 8,
+        backgroundColor: 'rgba(255,255,255,0.14)',
+        borderRadius: 999,
+        paddingHorizontal: 12,
+        paddingVertical: 8,
+    },
+    headerBadgeText: {
+        color: '#FFFFFF',
+        fontSize: 12,
+        fontWeight: '700',
+    },
+    headerBadgeSoft: {
+        backgroundColor: 'rgba(255,255,255,0.10)',
+        borderRadius: 999,
+        paddingHorizontal: 12,
+        paddingVertical: 8,
+    },
+    headerBadgeSoftText: {
+        color: '#E6F4F8',
+        fontSize: 12,
+        fontWeight: '700',
+    },
+    headerTitle: {
+        color: '#FFFFFF',
+        fontSize: 30,
+        lineHeight: 34,
+        fontWeight: '800',
+        fontFamily: Fonts.rounded,
+    },
+    headerSubtitle: {
+        color: 'rgba(255,255,255,0.88)',
+        fontSize: 15,
+        lineHeight: 22,
+        maxWidth: 330,
+    },
+    mapFrame: {
+        minHeight: 280,
+        borderRadius: 28,
+        backgroundColor: '#FFFFFF',
+        padding: 18,
+        overflow: 'hidden',
+        justifyContent: 'flex-end',
+        shadowColor: '#0A2430',
+        shadowOpacity: 0.08,
+        shadowRadius: 16,
+        shadowOffset: { width: 0, height: 8 },
+        elevation: 3,
+    },
+    mapGrid: {
+        ...StyleSheet.absoluteFillObject,
+        backgroundColor: '#F3F8FA',
+        borderRadius: 28,
+        opacity: 0.95,
+        borderWidth: 1,
+        borderColor: '#DDE9ED',
+        borderStyle: 'dashed',
+    },
+    mapPin: {
+        width: 64,
+        height: 64,
+        borderRadius: 22,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#D9F2F8',
+        marginBottom: 12,
+    },
+    mapTitle: {
+        color: '#17323D',
+        fontSize: 20,
+        lineHeight: 26,
+        fontWeight: '800',
+        fontFamily: Fonts.rounded,
+    },
+    mapText: {
+        color: '#5D7681',
+        fontSize: 14,
+        lineHeight: 20,
+        marginTop: 6,
+    },
+    summaryCard: {
+        backgroundColor: '#FFFFFF',
+        borderRadius: 20,
+        padding: 16,
+        shadowColor: '#0A2430',
+        shadowOpacity: 0.05,
+        shadowRadius: 12,
+        shadowOffset: { width: 0, height: 6 },
+        elevation: 2,
+    },
+    summaryLabel: {
+        color: '#0B6D88',
+        fontSize: 15,
+        lineHeight: 20,
+        fontWeight: '800',
+        fontFamily: Fonts.rounded,
+    },
+    summaryText: {
+        color: '#54717D',
+        fontSize: 14,
+        lineHeight: 20,
+        marginTop: 4,
+    },
+    summaryItem: {
+        marginBottom: 10,
+    },
+    primaryAction: {
+        backgroundColor: '#0B6D88',
+        borderRadius: 18,
+        minHeight: 56,
+        paddingHorizontal: 16,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 8,
+    },
+    primaryActionText: {
+        color: '#FFFFFF',
+        fontSize: 15,
+        fontWeight: '700',
+    },
 });

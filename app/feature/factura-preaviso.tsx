@@ -1,5 +1,4 @@
-import { Link } from 'expo-router';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import CardInfo from '@/components/card-info';
@@ -37,7 +36,6 @@ export default function FacturaPreaviso() {
                 </View>
 
                 <ButtonHome />
-
             </ScrollView>
         </SafeAreaView>
     );
@@ -50,15 +48,4 @@ const styles = StyleSheet.create({
     headerTitle: { color: '#FFFFFF', fontSize: 22, lineHeight: 28, fontWeight: '800', fontFamily: Fonts.rounded },
     headerSubtitle: { color: 'rgba(255,255,255,0.9)', fontSize: 13, lineHeight: 18 },
     list: { gap: 12 },
-    primaryAction: {
-        backgroundColor: '#0B6D88',
-        borderRadius: 18,
-        minHeight: 56,
-        paddingHorizontal: 16,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: 8,
-    },
-    primaryActionText: { color: '#FFFFFF', fontSize: 15, fontWeight: '700' },
 });

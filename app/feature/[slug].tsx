@@ -16,11 +16,6 @@ export default function FeatureScreen() {
     const section = feature ?? sections[0];
 
     const sampleData: Record<string, { label: string; value: string }[]> = {
-        reclamos: [
-            { label: 'Estado', value: 'Sin reclamos abiertos' },
-            { label: 'Último caso', value: 'Resuelto' },
-            { label: 'Tiempo promedio', value: '24h' },
-        ],
         notificaciones: [
             { label: 'No leídas', value: '2' },
             { label: 'Recordatorios', value: '1 pendiente' },

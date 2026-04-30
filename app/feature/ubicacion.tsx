@@ -4,8 +4,7 @@ import MapView, { Marker } from 'react-native-maps';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import TitleSection from '@/components/TitleSection';
-import { IconSymbol } from '@/components/ui/icon-symbol';
-import { Colors, Fonts } from '@/constants/theme';
+import { Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 
 type Location = {
@@ -93,19 +92,6 @@ export default function UbicacionScreen() {
         }
     };
 
-    const getTypeLabel = (type: string) => {
-        switch (type) {
-            case 'oficina':
-                return 'Oficina';
-            case 'punto_pago':
-                return 'Punto de Pago';
-            case 'atencion':
-                return 'Atención';
-            default:
-                return 'Ubicación';
-        }
-    };
-
     return (
         <SafeAreaView style={[styles.safeArea, { backgroundColor: palette.background }]}>
             <View style={[styles.content]}>
@@ -153,27 +139,6 @@ export default function UbicacionScreen() {
                     </View>
                 </ScrollView>
             </View>
-
-            <ScrollView style={styles.listContainer} showsVerticalScrollIndicator={false}>
-                {filteredLocations.map((location) => (
-                    <View key={location.id} style={styles.locationCard}>
-                        <View style={[styles.locationTypeIcon, { backgroundColor: getMarkerColor(location.type) }]}>
-                            <IconSymbol
-                                name={location.type === 'oficina' ? 'building.2.fill' : location.type === 'punto_pago' ? 'creditcard.fill' : 'location.fill'}
-                                size={18}
-                                color="#FFFFFF"
-                            />
-                        </View>
-                        <View style={styles.locationInfo}>
-                            <Text style={styles.locationName}>{location.name}</Text>
-                            <Text style={styles.locationType}>{getTypeLabel(location.type)}</Text>
-                            <Text style={styles.locationAddress}>{location.address}</Text>
-                            {location.hours && <Text style={styles.locationHours}>{location.hours}</Text>}
-                        </View>
-                    </View>
-                ))}
-                <View style={styles.bottomSpacer} />
-            </ScrollView>
         </SafeAreaView>
     );
 }
@@ -182,13 +147,16 @@ const styles = StyleSheet.create({
     safeArea: { flex: 1 },
     content: { paddingHorizontal: 16, paddingBottom: 16, gap: 16 },
     map: {
-        height: 280,
+        flex: 1,
+        minHeight: 360,
     },
     filterContainer: {
         backgroundColor: '#FFFFFF',
-        borderBottomWidth: 1,
-        borderBottomColor: '#E0E8EB',
+        borderTopWidth: 1,
+        borderTopColor: '#E0E8EB',
         paddingVertical: 12,
+        borderTopEndRadius: 24,
+        borderTopStartRadius: 24,
     },
     filterScroll: {
         paddingHorizontal: 16,
@@ -215,55 +183,5 @@ const styles = StyleSheet.create({
         borderRadius: 2,
         backgroundColor: '#0B6D88',
         marginTop: 4,
-    },
-    listContainer: {
-        flex: 1,
-        backgroundColor: '#FFFFFF',
-        paddingHorizontal: 16,
-        paddingTop: 12,
-    },
-    locationCard: {
-        flexDirection: 'row',
-        gap: 12,
-        marginBottom: 12,
-        backgroundColor: '#F8FAFB',
-        borderRadius: 16,
-        padding: 12,
-    },
-    locationTypeIcon: {
-        width: 48,
-        height: 48,
-        borderRadius: 12,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    locationInfo: {
-        flex: 1,
-        gap: 4,
-    },
-    locationName: {
-        color: '#17323D',
-        fontSize: 14,
-        fontWeight: '700',
-        fontFamily: Fonts.rounded,
-    },
-    locationType: {
-        color: '#0B6D88',
-        fontSize: 12,
-        fontWeight: '600',
-    },
-    locationAddress: {
-        color: '#56707B',
-        fontSize: 12,
-        lineHeight: 16,
-    },
-    locationHours: {
-        color: '#99B5BF',
-        fontSize: 11,
-        lineHeight: 14,
-        fontStyle: 'italic',
-    },
-    bottomSpacer: {
-        height: 24,
     },
 });

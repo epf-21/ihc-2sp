@@ -30,6 +30,8 @@ const MAPPING = {
   'person.crop.circle.fill': 'account-circle',
   'dollarsign.circle': 'attach-money',
   xmark: 'close',
+  checkmark: 'check',
+  plus: 'add',
   'arrow.right': 'arrow-forward',
   'arrow.left': 'arrow-back',
   'qr.code': 'qr-code',

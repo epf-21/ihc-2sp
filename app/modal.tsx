@@ -7,6 +7,21 @@ import { menuItems } from '@/constants/elfec';
 import { Colors, Fonts } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 
+const featureRouteBySlug = {
+    'cuentas-pago-qr': '/feature/cuentas-pago-qr',
+    'factura-preaviso': '/feature/factura-preaviso',
+    reclamos: '/feature/reclamos',
+    notificaciones: '/feature/notificaciones',
+    ubicacion: '/feature/ubicacion',
+    electrolineas: '/feature/electrolineas',
+} as const;
+
+type FeatureSlug = keyof typeof featureRouteBySlug;
+
+function hasFeatureRoute(slug: string): slug is FeatureSlug {
+    return slug in featureRouteBySlug;
+}
+
 export default function ModalScreen() {
     const colorScheme = useColorScheme() ?? 'light';
     const palette = Colors[colorScheme];
@@ -15,6 +30,9 @@ export default function ModalScreen() {
         <SafeAreaView style={[styles.safeArea, { backgroundColor: palette.background }]}>
             <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
                 <View style={[styles.sheet, { backgroundColor: palette.tint }]}>
+                    <View style={styles.sheetGlowTop} />
+                    <View style={styles.sheetGlowBottom} />
+
                     <View style={styles.sheetTop}>
                         <View style={styles.brandMark}>
                             <Text style={styles.brandMarkText}>elfec</Text>
@@ -33,26 +51,33 @@ export default function ModalScreen() {
                             <IconSymbol name="person.crop.circle.fill" size={42} color="#FFFFFF" />
                         </View>
                         <View style={styles.profileCopy}>
+                            <Text style={styles.profileLabel}>Correo</Text>
                             <Text style={styles.profileName}>efrainperalta.f@gmail.com</Text>
                         </View>
                     </View>
                 </View>
 
                 <View style={styles.menuPanel}>
-                    {menuItems.map((item) => (
-                        <Link key={item.slug} href={`/feature/${item.slug}`} asChild>
-                            <Pressable style={styles.menuItem}>
-                                <View style={[styles.menuIcon, { backgroundColor: `${item.accent}18` }]}>
-                                    <IconSymbol name={item.icon} size={22} color={item.accent} />
-                                </View>
-                                <View style={styles.menuCopy}>
-                                    <Text style={styles.menuTitle}>{item.title}</Text>
-                                    <Text style={styles.menuSubtitle}>{item.subtitle}</Text>
-                                </View>
-                                <IconSymbol name="arrow.right" size={18} color="#8AA0AA" />
-                            </Pressable>
-                        </Link>
-                    ))}
+                    {menuItems.map((item) => {
+                        if (!hasFeatureRoute(item.slug)) {
+                            return null;
+                        }
+
+                        return (
+                            <Link key={item.slug} href={featureRouteBySlug[item.slug]} asChild>
+                                <Pressable style={styles.menuItem}>
+                                    <View style={[styles.menuIcon, { backgroundColor: `${item.accent}18` }]}>
+                                        <IconSymbol name={item.icon} size={22} color={item.accent} />
+                                    </View>
+                                    <View style={styles.menuCopy}>
+                                        <Text style={styles.menuTitle}>{item.title}</Text>
+                                        <Text style={styles.menuSubtitle}>{item.subtitle}</Text>
+                                    </View>
+                                    <IconSymbol name="arrow.right" size={18} color="#8AA0AA" />
+                                </Pressable>
+                            </Link>
+                        );
+                    })}
                 </View>
             </ScrollView>
         </SafeAreaView>
@@ -68,11 +93,29 @@ const styles = StyleSheet.create({
         gap: 16,
     },
     sheet: {
-        minHeight: 280,
+        minHeight: 240,
         borderRadius: 30,
         padding: 18,
         justifyContent: 'space-between',
         overflow: 'hidden',
+    },
+    sheetGlowTop: {
+        position: 'absolute',
+        width: 220,
+        height: 220,
+        borderRadius: 220,
+        backgroundColor: 'rgba(255,255,255,0.08)',
+        top: -80,
+        right: -70,
+    },
+    sheetGlowBottom: {
+        position: 'absolute',
+        width: 180,
+        height: 180,
+        borderRadius: 180,
+        backgroundColor: 'rgba(255,255,255,0.06)',
+        bottom: -90,
+        left: -70,
     },
     sheetTop: {
         flexDirection: 'row',
@@ -91,9 +134,11 @@ const styles = StyleSheet.create({
         fontStyle: 'italic',
     },
     brandMarkCaption: {
-        color: 'rgba(255,255,255,0.84)',
-        fontSize: 13,
-        fontWeight: '600',
+        color: 'rgba(255,255,255,0.9)',
+        fontSize: 12,
+        fontWeight: '700',
+        letterSpacing: 0.4,
+        textTransform: 'uppercase',
     },
     closeButton: {
         width: 42,
@@ -107,6 +152,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         gap: 14,
+        backgroundColor: 'rgba(255,255,255,0.12)',
+        borderRadius: 20,
+        paddingHorizontal: 12,
+        paddingVertical: 10,
     },
     profileAvatar: {
         width: 64,
@@ -118,12 +167,19 @@ const styles = StyleSheet.create({
     },
     profileCopy: {
         flex: 1,
-        gap: 4,
+        gap: 2,
+    },
+    profileLabel: {
+        color: 'rgba(255,255,255,0.82)',
+        fontSize: 11,
+        fontWeight: '700',
+        letterSpacing: 0.4,
+        textTransform: 'uppercase',
     },
     profileName: {
         color: '#FFFFFF',
-        fontSize: 16,
-        lineHeight: 22,
+        fontSize: 15,
+        lineHeight: 20,
         fontWeight: '700',
     },
     profileRole: {

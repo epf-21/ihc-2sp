@@ -30,8 +30,6 @@ export default function ModalScreen() {
         <SafeAreaView style={[styles.safeArea, { backgroundColor: palette.background }]}>
             <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
                 <View style={[styles.sheet, { backgroundColor: palette.tint }]}>
-                    <View style={styles.sheetGlowTop} />
-                    <View style={styles.sheetGlowBottom} />
 
                     <View style={styles.sheetTop}>
                         <View style={styles.brandMark}>
@@ -93,29 +91,11 @@ const styles = StyleSheet.create({
         gap: 16,
     },
     sheet: {
-        minHeight: 240,
+        minHeight: 220,
         borderRadius: 30,
         padding: 18,
         justifyContent: 'space-between',
         overflow: 'hidden',
-    },
-    sheetGlowTop: {
-        position: 'absolute',
-        width: 220,
-        height: 220,
-        borderRadius: 220,
-        backgroundColor: 'rgba(255,255,255,0.08)',
-        top: -80,
-        right: -70,
-    },
-    sheetGlowBottom: {
-        position: 'absolute',
-        width: 180,
-        height: 180,
-        borderRadius: 180,
-        backgroundColor: 'rgba(255,255,255,0.06)',
-        bottom: -90,
-        left: -70,
     },
     sheetTop: {
         flexDirection: 'row',

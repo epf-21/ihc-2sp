@@ -243,7 +243,7 @@ const styles = StyleSheet.create({
     },
     guideImage: {
         width: '100%',
-        height: 420,
+        height: 225,
         borderRadius: 12,
         backgroundColor: '#F4F7F8',
     },

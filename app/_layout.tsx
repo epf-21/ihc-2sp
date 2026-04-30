@@ -18,7 +18,7 @@ export default function RootLayout() {
         <Stack.Screen name="feature/reclamos" options={{ headerShown: false }} />
         <Stack.Screen name="feature/notificaciones" options={{ headerShown: false }} />
         <Stack.Screen name="feature/ubicacion" options={{ headerShown: false }} />
-        <Stack.Screen name="feature/electrolineas" options={{ headerShown: false }} />
+        <Stack.Screen name="feature/electrolineras" options={{ headerShown: false }} />
         <Stack.Screen name="modal" options={{ presentation: 'modal', headerShown: false }} />
       </Stack>
       <StatusBar style="auto" />

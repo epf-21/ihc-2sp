@@ -15,10 +15,10 @@ type ElectrolineraOption = {
     description: string;
 };
 
-export default function ElectrolineasScreen() {
+export default function ElectrolinerasScreen() {
     const colorScheme = useColorScheme() ?? 'light';
     const palette = Colors[colorScheme];
-    const section = getSectionBySlug('electrolineas');
+    const section = getSectionBySlug('electrolineras');
 
     const options: ElectrolineraOption[] = [
         {
@@ -51,10 +51,10 @@ export default function ElectrolineasScreen() {
         <SafeAreaView style={[styles.safeArea, { backgroundColor: palette.background }]}>
             <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
                 <TitleSection
-                    sectionTitle="Electrolineas"
+                    sectionTitle="Electrolineras"
                     title="Servicios rápidos"
                     subtitle="Canales de contacto y servicios rápidos"
-                    slug="electrolineas"
+                    slug="electrolineras"
                 />
 
                 <View style={styles.optionsContainer}>

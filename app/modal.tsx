@@ -14,6 +14,7 @@ const featureRouteBySlug = {
     notificaciones: '/feature/notificaciones',
     ubicacion: '/feature/ubicacion',
     electrolineras: '/feature/electrolineras',
+    contacto: '/modal',
 } as const;
 
 type FeatureSlug = keyof typeof featureRouteBySlug;

@@ -30,6 +30,8 @@ export default function HomeScreen() {
         <SafeAreaView style={[styles.safeArea, { backgroundColor: palette.background }]}>
             <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
                 <View style={[styles.hero, { backgroundColor: palette.tint }]}>
+                    <View style={styles.heroGlowTop} />
+                    <View style={styles.heroGlowBottom} />
 
                     <View style={styles.topRow}>
                         <Link href="/modal" asChild>
@@ -90,11 +92,32 @@ const styles = StyleSheet.create({
     },
     hero: {
         borderRadius: 32,
+        padding: 18,
         paddingHorizontal: 20,
         paddingTop: 18,
         paddingBottom: 8,
         minHeight: 220,
         overflow: 'hidden',
+        justifyContent: 'flex-start',
+        gap: 16,
+    },
+    heroGlowTop: {
+        position: 'absolute',
+        width: 180,
+        height: 180,
+        borderRadius: 180,
+        backgroundColor: 'rgba(255,255,255,0.12)',
+        right: -40,
+        top: -50,
+    },
+    heroGlowBottom: {
+        position: 'absolute',
+        width: 220,
+        height: 220,
+        borderRadius: 220,
+        backgroundColor: 'rgba(255,255,255,0.08)',
+        left: -90,
+        bottom: -120,
         justifyContent: 'space-between',
     },
     topRow: {

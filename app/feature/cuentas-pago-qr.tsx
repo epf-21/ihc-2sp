@@ -16,9 +16,6 @@ export default function CuentasPagoQR() {
         <SafeAreaView style={[styles.safeArea, { backgroundColor: palette.background }]}>
             <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
                 <TitleSection
-                    sectionTitle="Cuentas y Pago QR"
-                    title="Mis cuentas"
-                    subtitle="Accesos rápidos a tus cuentas y estado de deuda"
                     slug="cuentas-pago-qr"
                 />
 

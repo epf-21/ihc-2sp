@@ -16,9 +16,6 @@ export default function FacturaPreaviso() {
         <SafeAreaView style={[styles.safeArea, { backgroundColor: palette.background }]}>
             <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
                 <TitleSection
-                    sectionTitle="Factura y Preavisos"
-                    title="Mis Facturas y Preavisos"
-                    subtitle="Resumen de facturación y avisos pendientes"
                     slug="factura-preaviso"
                 />
 

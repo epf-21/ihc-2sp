@@ -17,9 +17,6 @@ export default function ReclamosScreen() {
         <SafeAreaView style={[styles.safeArea, { backgroundColor: palette.background }]}>
             <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
                 <TitleSection
-                    sectionTitle="Reclamos"
-                    title="Mis reclamos"
-                    subtitle="Registro de reclamaciones por falta de energía eléctrica"
                     slug="reclamos"
                 />
 

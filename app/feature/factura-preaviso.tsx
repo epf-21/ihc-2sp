@@ -1,12 +1,9 @@
 import { useRouter } from 'expo-router';
-import { useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import AddAccountModal from '@/components/AddAccountModal';
 import CardInfo from '@/components/card-info';
 import TitleSection from '@/components/TitleSection';
-import { IconSymbol } from '@/components/ui/icon-symbol';
 import { accounts } from '@/constants/pagos';
 import { Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
@@ -14,13 +11,7 @@ import { useColorScheme } from '@/hooks/use-color-scheme';
 export default function FacturaPreaviso() {
     const colorScheme = useColorScheme() ?? 'light';
     const palette = Colors[colorScheme];
-    const [modalVisible, setModalVisible] = useState(false);
     const router = useRouter();
-
-    const handleAddAccount = (data: { nus: string; cuenta: string; descripcion: string }) => {
-        console.log('Cuenta agregada:', data);
-        setModalVisible(false);
-    };
 
     return (
         <SafeAreaView style={[styles.safeArea, { backgroundColor: palette.background }]}>
@@ -43,18 +34,7 @@ export default function FacturaPreaviso() {
                         />
                     ))}
                 </View>
-
-                <Pressable style={styles.addButton} onPress={() => setModalVisible(true)}>
-                    <IconSymbol name="plus" size={20} color="#FFFFFF" />
-                    <Text style={styles.addButtonText}>Agregar Cuenta</Text>
-                </Pressable>
             </ScrollView>
-
-            <AddAccountModal
-                visible={modalVisible}
-                onClose={() => setModalVisible(false)}
-                onSubmit={handleAddAccount}
-            />
         </SafeAreaView>
     );
 }

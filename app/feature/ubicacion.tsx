@@ -3,10 +3,10 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import TitleSection from '@/components/TitleSection';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors, Fonts } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
-import TitleSection from '@/components/TitleSection';
 
 type Location = {
     id: string;
@@ -24,58 +24,58 @@ export default function UbicacionScreen() {
     const [selectedType, setSelectedType] = useState<'all' | 'oficina' | 'punto_pago' | 'atencion'>('all');
 
     const initialRegion = {
-        latitude: -16.4897,
-        longitude: -68.1093,
+        latitude: -17.373966,
+        longitude: -66.164496,
         latitudeDelta: 0.1,
         longitudeDelta: 0.1,
     };
 
     const locations: Location[] = [
-      {
-        id: '1',
-        name: 'Oficina Central ELFEC',
-        address: 'Av. Ramón Rivero, Cochabamba',
-        type: 'oficina',
-        latitude: -17.3835,
-        longitude: -66.1568,
-        hours: 'Lun-Vie: 08:00-18:00',
-      },
-      {
-        id: '2',
-        name: 'Punto de Atención Norte',
-        address: 'Av. América, Cochabamba',
-        type: 'atencion',
-        latitude: -17.3732,
-        longitude: -66.1485,
-        hours: 'Lun-Sab: 08:00-17:00',
-      },
-      {
-        id: '3',
-        name: 'Centro de Pagos - Zona Central',
-        address: 'Calle España, Cochabamba',
-        type: 'punto_pago',
-        latitude: -17.3935,
-        longitude: -66.1570,
-        hours: 'Lun-Dom: 08:00-20:00',
-      },
-      {
-        id: '4',
-        name: 'Oficina de Reclamos',
-        address: 'Av. Heroínas, Cochabamba',
-        type: 'oficina',
-        latitude: -17.3892,
-        longitude: -66.1623,
-        hours: 'Lun-Vie: 09:00-17:00',
-      },
-      {
-        id: '5',
-        name: 'Centro de Pagos - Queru Queru',
-        address: 'Zona Queru Queru, Cochabamba',
-        type: 'punto_pago',
-        latitude: -17.3659,
-        longitude: -66.1731,
-        hours: 'Lun-Dom: 08:00-20:00',
-      },
+        {
+            id: '1',
+            name: 'Oficina Central ELFEC',
+            address: 'Av. Ramón Rivero, Cochabamba',
+            type: 'oficina',
+            latitude: -17.3835,
+            longitude: -66.1568,
+            hours: 'Lun-Vie: 08:00-18:00',
+        },
+        {
+            id: '2',
+            name: 'Punto de Atención Norte',
+            address: 'Av. América, Cochabamba',
+            type: 'atencion',
+            latitude: -17.3732,
+            longitude: -66.1485,
+            hours: 'Lun-Sab: 08:00-17:00',
+        },
+        {
+            id: '3',
+            name: 'Centro de Pagos - Zona Central',
+            address: 'Calle España, Cochabamba',
+            type: 'punto_pago',
+            latitude: -17.3935,
+            longitude: -66.1570,
+            hours: 'Lun-Dom: 08:00-20:00',
+        },
+        {
+            id: '4',
+            name: 'Oficina de Reclamos',
+            address: 'Av. Heroínas, Cochabamba',
+            type: 'oficina',
+            latitude: -17.3892,
+            longitude: -66.1623,
+            hours: 'Lun-Vie: 09:00-17:00',
+        },
+        {
+            id: '5',
+            name: 'Centro de Pagos - Queru Queru',
+            address: 'Zona Queru Queru, Cochabamba',
+            type: 'punto_pago',
+            latitude: -17.3659,
+            longitude: -66.1731,
+            hours: 'Lun-Dom: 08:00-20:00',
+        },
     ];
 
     const filteredLocations = selectedType === 'all' ? locations : locations.filter(loc => loc.type === selectedType);

@@ -2,11 +2,11 @@ import { useLocalSearchParams } from 'expo-router';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import ButtonHome from '@/components/Button';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { getSectionBySlug, sections } from '@/constants/elfec';
 import { Colors, Fonts } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
-import ButtonHome from '@/components/Button';
 
 export default function FeatureScreen() {
     const { slug } = useLocalSearchParams<{ slug?: string }>();
@@ -16,11 +16,6 @@ export default function FeatureScreen() {
     const section = feature ?? sections[0];
 
     const sampleData: Record<string, { label: string; value: string }[]> = {
-        notificaciones: [
-            { label: 'No leídas', value: '2' },
-            { label: 'Recordatorios', value: '1 pendiente' },
-            { label: 'Última alerta', value: 'Hoy 09:30' },
-        ],
         ubicacion: [
             { label: 'Mapa', value: 'En preparación' },
             { label: 'Puntos de atención', value: 'Próxima iteración' },

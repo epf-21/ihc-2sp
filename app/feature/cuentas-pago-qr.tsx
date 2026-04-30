@@ -1,3 +1,4 @@
+import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -14,6 +15,7 @@ export default function CuentasPagoQR() {
     const colorScheme = useColorScheme() ?? 'light';
     const palette = Colors[colorScheme];
     const [modalVisible, setModalVisible] = useState(false);
+    const router = useRouter();
 
     const handleAddAccount = (data: { nus: string; cuenta: string; descripcion: string }) => {
         console.log('Cuenta agregada:', data);
@@ -37,6 +39,7 @@ export default function CuentasPagoQR() {
                             direccion={acct.direccion}
                             monto={acct.monto}
                             estado={acct.estado}
+                            onPress={() => router.push(`/feature/account-detail/${acct.nus}`)}
                         />
                     ))}
                 </View>

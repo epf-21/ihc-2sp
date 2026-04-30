@@ -1,3 +1,4 @@
+import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -14,6 +15,7 @@ export default function FacturaPreaviso() {
     const colorScheme = useColorScheme() ?? 'light';
     const palette = Colors[colorScheme];
     const [modalVisible, setModalVisible] = useState(false);
+    const router = useRouter();
 
     const handleAddAccount = (data: { nus: string; cuenta: string; descripcion: string }) => {
         console.log('Cuenta agregada:', data);
@@ -37,6 +39,7 @@ export default function FacturaPreaviso() {
                             direccion={account.direccion}
                             monto={account.monto}
                             estado={account.estado}
+                            onPress={() => router.push(`/feature/invoice-detail/${account.nus}`)}
                         />
                     ))}
                 </View>

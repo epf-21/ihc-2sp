@@ -1,6 +1,6 @@
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors, Fonts } from '@/constants/theme';
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 interface CardInfoProps {
     cuenta: string;
@@ -9,11 +9,12 @@ interface CardInfoProps {
     direccion: string;
     monto: string;
     estado: string;
+    onPress?: () => void;
 }
 
-export default function CardInfo({ cuenta, nus, usuario, direccion, monto, estado }: CardInfoProps) {
+export default function CardInfo({ cuenta, nus, usuario, direccion, monto, estado, onPress }: CardInfoProps) {
     return (
-        <View style={styles.card}>
+        <Pressable onPress={onPress} style={({ pressed }) => [styles.card, pressed && styles.cardPressed]}>
             <View style={styles.rowWithIcon}>
                 <View style={styles.iconWrap}>
                     <IconSymbol name="creditcard.fill" size={18} color={Colors.light.tabIconSelected} />
@@ -72,7 +73,7 @@ export default function CardInfo({ cuenta, nus, usuario, direccion, monto, estad
                     </View>
                 </View>
             </View>
-        </View>
+        </Pressable>
     )
 }
 
@@ -86,6 +87,9 @@ const styles = StyleSheet.create({
         shadowRadius: 10,
         shadowOffset: { width: 0, height: 6 },
         elevation: 2,
+    },
+    cardPressed: {
+        opacity: 0.8,
     },
     cardRow: { marginBottom: 8 },
     rowWithIcon: { flexDirection: 'row', alignItems: 'center', marginBottom: 10 },

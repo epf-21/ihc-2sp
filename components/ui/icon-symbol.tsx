@@ -26,6 +26,7 @@ const MAPPING = {
   'exclamationmark.circle.fill': 'error-outline',
   'creditcard.fill': 'credit-card',
   'bolt.fill': 'bolt',
+  'bar.chart': 'bar-chart',
   'person.crop.circle.fill': 'account-circle',
   xmark: 'close',
   'arrow.right': 'arrow-forward',

@@ -16,8 +16,12 @@ export default function RootLayout() {
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
         <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen name="feature/[slug]" options={{ headerShown: false }} />
         <Stack.Screen name="feature/cuentas-pago-qr" options={{ headerShown: false }} />
+        <Stack.Screen name="feature/factura-preaviso" options={{ headerShown: false }} />
+        <Stack.Screen name="feature/reclamos" options={{ headerShown: false }} />
+        <Stack.Screen name="feature/notificaciones" options={{ headerShown: false }} />
+        <Stack.Screen name="feature/ubicacion" options={{ headerShown: false }} />
+        <Stack.Screen name="feature/electrolineas" options={{ headerShown: false }} />
         <Stack.Screen name="modal" options={{ presentation: 'modal', headerShown: false }} />
       </Stack>
       <StatusBar style="auto" />

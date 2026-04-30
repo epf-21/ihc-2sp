@@ -13,7 +13,7 @@ const featureRouteBySlug = {
     reclamos: '/feature/reclamos',
     notificaciones: '/feature/notificaciones',
     ubicacion: '/feature/ubicacion',
-    electrolineas: '/feature/electrolineas',
+    electrolineras: '/feature/electrolineras',
 } as const;
 
 type FeatureSlug = keyof typeof featureRouteBySlug;

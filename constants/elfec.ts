@@ -53,8 +53,8 @@ export const sections: ElfecSection[] = [
         description: 'Esta seccion se deja como referencia para la siguiente iteracion del redisenio.',
     },
     {
-        slug: 'electrolineas',
-        title: 'Electrolineas',
+        slug: 'electrolineras',
+        title: 'Electrolineras',
         subtitle: 'Canales de contacto rapido',
         icon: 'bolt.fill',
         accent: '#0B6D88',

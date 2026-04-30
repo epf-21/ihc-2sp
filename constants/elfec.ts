@@ -55,7 +55,7 @@ export const sections: ElfecSection[] = [
     {
         slug: 'electrolineras',
         title: 'Electrolineras',
-        subtitle: 'Puntos de carga eléctrica',
+        subtitle: 'Canales de contacto rápido',
         icon: 'bolt.fill',
         accent: '#0B6D88',
         description: 'Gestiona tu saldo, revisa el historial de compras, consulta electrolineras cercanas y accede a información de uso.',

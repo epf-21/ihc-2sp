@@ -50,7 +50,7 @@ export default function ModalScreen() {
                         </View>
                         <View style={styles.profileCopy}>
                             <Text style={styles.profileLabel}>Correo</Text>
-                            <Text style={styles.profileName}>efrainperalta.f@gmail.com</Text>
+                            <Text style={styles.profileName}>correo.electronico@gmail.com</Text>
                         </View>
                     </View>
                 </View>

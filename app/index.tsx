@@ -37,7 +37,7 @@ export default function HomeScreen() {
                                 <IconSymbol name="line.3.horizontal" size={24} color="#FFFFFF" />
                             </Pressable>
                         </Link>
-                        <Text style={styles.heroEmail}>efrainperalta.f@gmail.com</Text>
+                        <Text style={styles.heroEmail}>correo.electronico@gmail.com</Text>
                         <View style={styles.avatarWrap}>
                             <IconSymbol name="person.crop.circle.fill" size={28} color="#FFFFFF" />
                         </View>

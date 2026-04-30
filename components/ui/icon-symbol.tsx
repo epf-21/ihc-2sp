@@ -30,6 +30,7 @@ const MAPPING = {
   'person.crop.circle.fill': 'account-circle',
   xmark: 'close',
   'arrow.right': 'arrow-forward',
+  'arrow.left': 'arrow-back',
   'qr.code': 'qr-code',
 } as IconMapping;
 

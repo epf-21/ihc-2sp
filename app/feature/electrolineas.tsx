@@ -74,7 +74,7 @@ export default function ElectrolineasScreen() {
                 <View style={styles.qrSection}>
                     <View style={[styles.qrContainer, { backgroundColor: section?.accent ?? palette.tint }]}>
                         <View style={styles.qrPlaceholder}>
-                            <IconSymbol name="qrcode" size={80} color="#FFFFFF" />
+                            <IconSymbol name="qr.code" size={120} color="#FFFFFF" />
                         </View>
                     </View>
                     <Text style={styles.qrLabel}>Código QR para escanear</Text>

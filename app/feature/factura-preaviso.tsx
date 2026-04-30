@@ -2,11 +2,10 @@ import { ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import CardInfo from '@/components/card-info';
+import TitleSection from '@/components/TitleSection';
+import { accounts } from '@/constants/pagos';
 import { Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
-import ButtonHome from '@/components/Button';
-import { accounts } from '@/constants/pagos';
-import TitleSection from '@/components/TitleSection';
 
 export default function FacturaPreaviso() {
     const colorScheme = useColorScheme() ?? 'light';
@@ -35,8 +34,6 @@ export default function FacturaPreaviso() {
                         />
                     ))}
                 </View>
-
-                <ButtonHome />
             </ScrollView>
         </SafeAreaView>
     );

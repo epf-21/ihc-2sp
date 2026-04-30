@@ -1,12 +1,11 @@
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import ButtonHome from '@/components/Button';
+import TitleSection from '@/components/TitleSection';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { getSectionBySlug } from '@/constants/elfec';
 import { Colors, Fonts } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
-import TitleSection from '@/components/TitleSection';
 
 type ElectrolineraOption = {
     id: string;
@@ -82,8 +81,6 @@ export default function ElectrolinerasScreen() {
                         Escanea este código para acceder directamente a nuestros servicios
                     </Text>
                 </View>
-
-                <ButtonHome />
             </ScrollView>
         </SafeAreaView>
     );

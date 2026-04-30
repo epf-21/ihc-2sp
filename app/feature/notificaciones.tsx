@@ -2,10 +2,9 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { NotificationSection } from '@/components/notification-section';
+import TitleSection from '@/components/TitleSection';
 import { Colors, Fonts } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
-import ButtonHome from '@/components/Button';
-import TitleSection from '@/components/TitleSection';
 
 export default function NotificacionesScreen() {
     const colorScheme = useColorScheme() ?? 'light';
@@ -99,7 +98,6 @@ export default function NotificacionesScreen() {
                     </NotificationSection>
                 </View>
 
-                <ButtonHome />
             </ScrollView>
         </SafeAreaView>
     );

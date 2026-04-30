@@ -28,6 +28,7 @@ const MAPPING = {
   'bolt.fill': 'bolt',
   'bar.chart': 'bar-chart',
   'person.crop.circle.fill': 'account-circle',
+  'dollarsign.circle': 'attach-money',
   xmark: 'close',
   'arrow.right': 'arrow-forward',
   'arrow.left': 'arrow-back',

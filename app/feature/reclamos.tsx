@@ -2,11 +2,10 @@ import { useState } from 'react';
 import { Modal, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import TitleSection from '@/components/TitleSection';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors, Fonts } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
-import ButtonHome from '@/components/Button';
-import TitleSection from '@/components/TitleSection';
 
 export default function ReclamosScreen() {
     const colorScheme = useColorScheme() ?? 'light';
@@ -32,7 +31,6 @@ export default function ReclamosScreen() {
                     </Pressable>
                 </View>
 
-                <ButtonHome />
             </ScrollView>
 
             <Modal visible={visible} transparent animationType="fade" onRequestClose={() => setVisible(false)}>

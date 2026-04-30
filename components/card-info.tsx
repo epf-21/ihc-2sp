@@ -1,5 +1,6 @@
-import { StyleSheet, View, Text } from 'react-native';
-import { Fonts } from '@/constants/theme';
+import { IconSymbol } from '@/components/ui/icon-symbol';
+import { Colors, Fonts } from '@/constants/theme';
+import { StyleSheet, Text, View } from 'react-native';
 
 interface CardInfoProps {
     cuenta: string;
@@ -13,41 +14,62 @@ interface CardInfoProps {
 export default function CardInfo({ cuenta, nus, usuario, direccion, monto, estado }: CardInfoProps) {
     return (
         <View style={styles.card}>
-            <View style={styles.cardRow}>
-                <Text style={styles.cardLabel}>CUENTA</Text>
-                <Text style={styles.cardValue}>{cuenta}</Text>
+            <View style={styles.rowWithIcon}>
+                <View style={styles.iconWrap}>
+                    <IconSymbol name="creditcard.fill" size={18} color={Colors.light.tabIconSelected} />
+                </View>
+                <View style={styles.rowText}>
+                    <Text style={styles.cardLabel}>CUENTA</Text>
+                    <Text style={styles.cardValue}>{cuenta}</Text>
+                </View>
             </View>
 
-            <View style={styles.cardRow}>
-                <Text style={styles.cardLabel}>NUS</Text>
-                <Text style={styles.cardValue}>{nus}</Text>
+            <View style={styles.rowWithIcon}>
+                <View style={styles.iconWrapLight}>
+                    <IconSymbol name="doc.text.fill" size={18} color={Colors.light.tabIconSelected} />
+                </View>
+                <View style={styles.rowText}>
+                    <Text style={styles.cardLabel}>NUS</Text>
+                    <Text style={styles.cardValue}>{nus}</Text>
+                </View>
             </View>
 
-            <View style={styles.cardRow}>
-                <Text style={styles.cardLabel}>USUARIO</Text>
-                <Text style={styles.cardValue}>{usuario}</Text>
+            <View style={styles.rowWithIcon}>
+                <View style={styles.iconWrapLight}>
+                    <IconSymbol name="person.crop.circle.fill" size={18} color={Colors.light.tabIconSelected} />
+                </View>
+                <View style={styles.rowText}>
+                    <Text style={styles.cardLabel}>USUARIO</Text>
+                    <Text style={styles.cardValue}>{usuario}</Text>
+                </View>
             </View>
 
-            <View style={styles.cardRow}>
-                <Text style={styles.cardLabel}>DIRECCIÓN</Text>
-                <Text style={styles.cardValue}>{direccion}</Text>
+            <View style={styles.rowWithIcon}>
+                <View style={styles.iconWrapLight}>
+                    <IconSymbol name="map.fill" size={18} color={Colors.light.tabIconSelected} />
+                </View>
+                <View style={styles.rowText}>
+                    <Text style={styles.cardLabel}>DIRECCIÓN</Text>
+                    <Text style={styles.cardValue}>{direccion}</Text>
+                </View>
             </View>
 
             <View style={styles.cardFooter}>
-                <View>
-                    <Text style={styles.cardLabel}>MONTO DE LA DEUDA</Text>
-                    <Text style={styles.debtValue}>{monto}</Text>
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                    <View style={styles.amountWrap}>
+                        <IconSymbol name="dollarsign.circle" size={20} color={Colors.light.tabIconSelected} />
+                    </View>
+                    <View>
+                        <Text style={styles.cardLabel}>MONTO DE LA DEUDA</Text>
+                        <Text style={styles.debtValue}>{monto}</Text>
+                    </View>
                 </View>
 
                 <View style={styles.statusPillWrap}>
-                    <Text
-                        style={[
-                            styles.statusPill,
-                            estado === 'Pendiente' ? styles.statusPending : styles.statusOk,
-                        ]}
-                    >
-                        {estado}
-                    </Text>
+                    <View style={[styles.statusPill, estado === 'Pendiente' ? styles.statusPending : styles.statusOk]}>
+                        <IconSymbol name={estado === 'Pendiente' ? 'exclamationmark.circle.fill' : 'arrow.right'} size={12 as any} color="#FFFFFF" />
+                        <Text style={styles.statusPillText}>{estado}</Text>
+                    </View>
                 </View>
             </View>
         </View>
@@ -66,12 +88,18 @@ const styles = StyleSheet.create({
         elevation: 2,
     },
     cardRow: { marginBottom: 8 },
+    rowWithIcon: { flexDirection: 'row', alignItems: 'center', marginBottom: 10 },
+    iconWrap: { width: 44, height: 44, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: '#EAF8FB', marginRight: 12 },
+    iconWrapLight: { width: 40, height: 40, borderRadius: 10, alignItems: 'center', justifyContent: 'center', backgroundColor: '#EAF8FB', marginRight: 12 },
+    rowText: { flex: 1 },
     cardLabel: { color: '#0B6D88', fontSize: 12, fontWeight: '700', fontFamily: Fonts.rounded },
     cardValue: { color: '#17323D', fontSize: 15, fontWeight: '700', marginTop: 2 },
     cardFooter: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 8 },
     debtValue: { color: '#D9534F', fontSize: 16, fontWeight: '800', marginTop: 4 },
     statusPillWrap: { alignItems: 'flex-end' },
-    statusPill: { paddingHorizontal: 12, paddingVertical: 6, borderRadius: 16, color: '#FFFFFF', fontWeight: '800' },
+    amountWrap: { width: 44, height: 44, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: '#EAF8FB', marginRight: 12 },
+    statusPill: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 12, paddingVertical: 6, borderRadius: 16 },
+    statusPillText: { color: '#FFFFFF', marginLeft: 8, fontWeight: '800' },
     statusPending: { backgroundColor: '#D9534F' },
     statusOk: { backgroundColor: '#0B6D88' }
 })

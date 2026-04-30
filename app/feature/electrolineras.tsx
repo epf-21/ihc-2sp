@@ -50,9 +50,6 @@ export default function ElectrolinerasScreen() {
         <SafeAreaView style={[styles.safeArea, { backgroundColor: palette.background }]}>
             <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
                 <TitleSection
-                    sectionTitle="Electrolineras"
-                    title="Servicios rápidos"
-                    subtitle="Canales de contacto y servicios rápidos"
                     slug="electrolineras"
                 />
 

@@ -18,7 +18,7 @@ export const sections: ElfecSection[] = [
         subtitle: 'Consulta saldos y paga sin fricción',
         icon: 'creditcard.fill',
         accent: '#0B6D88',
-        description: 'Un acceso visual prioritario para cuentas, pagos y acciones frecuentes.',
+        description: 'Revisa tu saldo, gestiona tus cuentas y realiza pagos de forma rápida mediante QR.',
     },
     {
         slug: 'factura-preaviso',
@@ -26,7 +26,7 @@ export const sections: ElfecSection[] = [
         subtitle: 'Revisa tus documentos y avisos',
         icon: 'doc.text.fill',
         accent: '#0B6D88',
-        description: 'Se prioriza la lectura del estado de facturación y la recuperación rápida de datos.',
+        description: 'Consulta tus facturas y preavisos, revisa montos y fechas importantes en un solo lugar.',
     },
     {
         slug: 'reclamos',
@@ -34,7 +34,7 @@ export const sections: ElfecSection[] = [
         subtitle: 'Registro y seguimiento de solicitudes',
         icon: 'exclamationmark.circle.fill',
         accent: '#0B6D88',
-        description: 'Canal de resolución con jerarquía clara para evitar errores de interpretación.',
+        description: 'Registra reclamos fácilmente y haz seguimiento al estado de tus solicitudes.',
     },
     {
         slug: 'notificaciones',
@@ -42,7 +42,7 @@ export const sections: ElfecSection[] = [
         subtitle: 'Alertas, recordatorios y novedades',
         icon: 'bell.fill',
         accent: '#0B6D88',
-        description: 'Mensajes visibles y consistentes para reforzar la lectura de eventos importantes.',
+        description: 'Recibe alertas sobre vencimientos, cortes programados y novedades del servicio.',
     },
     {
         slug: 'ubicacion',
@@ -50,15 +50,15 @@ export const sections: ElfecSection[] = [
         subtitle: 'Puntos de atención y mapas',
         icon: 'map.fill',
         accent: '#0B6D88',
-        description: 'Esta sección se deja como referencia para la siguiente iteración del rediseño.',
+        description: 'Encuentra oficinas, puntos de pago y centros de atención cercanos a tu ubicación.',
     },
     {
         slug: 'electrolineras',
         title: 'Electrolineras',
-        subtitle: 'Canales de contacto rápido',
+        subtitle: 'Puntos de carga eléctrica',
         icon: 'bolt.fill',
         accent: '#0B6D88',
-        description: 'Un acceso para resolver dudas por canal directo con soporte visible.',
+        description: 'Gestiona tu saldo, revisa el historial de compras, consulta electrolineras cercanas y accede a información de uso.',
     },
 ];
 

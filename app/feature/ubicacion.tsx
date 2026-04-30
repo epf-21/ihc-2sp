@@ -110,9 +110,6 @@ export default function UbicacionScreen() {
         <SafeAreaView style={[styles.safeArea, { backgroundColor: palette.background }]}>
             <View style={[styles.content]}>
                 <TitleSection
-                    sectionTitle="Servicios de ubicación"
-                    title="Puntos de servicio"
-                    subtitle="Encuentra nuestros puntos de atención cercanos"
                     slug="ubicacion"
                 />
             </View>

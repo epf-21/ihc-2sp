@@ -29,9 +29,6 @@ export default function NotificacionesScreen() {
         <SafeAreaView style={[styles.safeArea, { backgroundColor: palette.background }]}>
             <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
                 <TitleSection
-                    sectionTitle="Notificaciones"
-                    title="Centro de notificaciones"
-                    subtitle="Alertas, recordatorios y novedades"
                     slug="notificaciones"
                 />
 

@@ -7,15 +7,12 @@ import { Pressable } from 'react-native';
 import { useRouter } from 'expo-router';
 
 interface Props {
-  sectionTitle: string;
-  title: string;
-  subtitle: string;
-  slug?: string;
+  slug: string;
 }
 
-export default function TitleSection({ sectionTitle, title, subtitle, slug }: Props) {
+export default function TitleSection({ slug }: Props) {
   const colorScheme = useColorScheme() ?? 'light';
-  const section = getSectionBySlug(slug ?? '');
+  const section = getSectionBySlug(slug);
   const palette = Colors[colorScheme];
   const router = useRouter();
 
@@ -28,18 +25,29 @@ export default function TitleSection({ sectionTitle, title, subtitle, slug }: Pr
 
         <View style={styles.headerBadge}>
           <IconSymbol name={section?.icon ?? 'doc.text.fill'} size={18} color="#FFFFFF" />
-          <Text style={styles.headerBadgeText}>{sectionTitle}</Text>
+          <Text style={styles.headerBadgeText}>{section?.title}</Text>
         </View>
       </View>
 
-      <Text style={styles.headerTitle}>{ title }</Text>
-      <Text style={styles.headerSubtitle}>{ subtitle }</Text>
+      <View style={styles.headerText}>
+        <Text style={styles.headerTitle}>{ section?.subtitle }</Text>
+        <Text style={styles.headerSubtitle}>{ section?.description }</Text>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  header: { borderRadius: 28, padding: 18, minHeight: 150, justifyContent: 'space-between' },
+  header: {
+    borderRadius: 28,
+    padding: 18,
+    minHeight: 160,
+    justifyContent: 'space-between',
+    gap: 16,
+  },
+ headerText: {
+    gap: 8,
+  },
   headerTop: {
     flexDirection: 'row',
     alignItems: 'center',

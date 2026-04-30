@@ -21,6 +21,7 @@ export default function RootLayout() {
         <Stack.Screen name="feature/electrolineras" options={{ headerShown: false }} />
         <Stack.Screen name="feature/account-detail/[nus]" options={{ headerShown: false }} />
         <Stack.Screen name="feature/invoice-detail/[nus]" options={{ headerShown: false }} />
+        <Stack.Screen name="feature/cargar-saldo" options={{ headerShown: false }} />
         <Stack.Screen name="modal" options={{ presentation: 'modal', headerShown: false }} />
       </Stack>
       <StatusBar style="auto" />

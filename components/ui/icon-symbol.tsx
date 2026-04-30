@@ -35,6 +35,7 @@ const MAPPING = {
   'arrow.right': 'arrow-forward',
   'arrow.left': 'arrow-back',
   'qr.code': 'qr-code',
+  'car.fill': 'directions-car',
 } as IconMapping;
 
 /**

@@ -6,12 +6,14 @@ import { IconSymbol } from '@/components/ui/icon-symbol';
 import { getSectionBySlug } from '@/constants/elfec';
 import { Colors, Fonts } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
+import { Link } from 'expo-router';
 
 type ElectrolineraOption = {
     id: string;
     title: string;
     icon: string;
     description: string;
+    to: string;
 };
 
 export default function ElectrolinerasScreen() {
@@ -25,24 +27,28 @@ export default function ElectrolinerasScreen() {
             title: 'Cargar saldo',
             icon: 'creditcard.fill',
             description: 'Carga saldo electrónico a tu cuenta',
+            to: '/feature/cargar-saldo',
         },
         {
             id: 'historico-compras',
             title: 'Histórico de compras',
             icon: 'doc.text.fill',
             description: 'Consulta tus transacciones anteriores',
+            to: '/feature/electrolineras',
         },
         {
             id: 'mapa-electrolineras',
             title: 'Mapa de electrolineras',
             icon: 'map.fill',
             description: 'Encuentra puntos de venta cercanos',
+            to: '/feature/electrolineras',
         },
         {
             id: 'estadisticas',
             title: 'Información estadística',
             icon: 'bar.chart',
             description: 'Consulta datos de consumo y uso',
+            to: '/feature/electrolineras',
         },
     ];
 
@@ -55,15 +61,17 @@ export default function ElectrolinerasScreen() {
 
                 <View style={styles.optionsContainer}>
                     {options.map((option) => (
-                        <Pressable key={option.id} style={styles.optionCard}>
-                            <View style={styles.optionIconContainer}>
-                                <IconSymbol name={option.icon as any} size={28} color="#0B6D88" />
-                            </View>
-                            <View style={styles.optionContent}>
-                                <Text style={styles.optionTitle}>{option.title}</Text>
-                            </View>
-                            <IconSymbol name="chevron.right" size={20} color="#56707B" />
-                        </Pressable>
+                        <Link href={option.to} key={option.id} asChild>
+                            <Pressable style={styles.optionCard}>
+                                <View style={styles.optionIconContainer}>
+                                    <IconSymbol name={option.icon as any} size={28} color="#0B6D88" />
+                                </View>
+                                <View style={styles.optionContent}>
+                                    <Text style={styles.optionTitle}>{option.title}</Text>
+                                </View>
+                                <IconSymbol name="chevron.right" size={20} color="#56707B" />
+                            </Pressable>
+                        </Link>
                     ))}
                 </View>
 

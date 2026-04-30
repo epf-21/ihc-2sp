@@ -4,7 +4,7 @@ import { getSectionBySlug } from '@/constants/elfec';
 import { Colors, Fonts } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { Pressable } from 'react-native';
-import { useRouter } from 'expo-router';
+import { Link } from 'expo-router';
 
 interface Props {
   slug: string;
@@ -14,14 +14,15 @@ export default function TitleSection({ slug }: Props) {
   const colorScheme = useColorScheme() ?? 'light';
   const section = getSectionBySlug(slug);
   const palette = Colors[colorScheme];
-  const router = useRouter();
 
   return (
     <View style={[styles.header, { backgroundColor: section?.accent ?? palette.tint }]}>
       <View style={styles.headerTop}>
-        <Pressable onPress={() => router.back()} style={styles.backButton}>
-          <IconSymbol name="arrow.left" size={26} color="#FFFFFF" />
-        </Pressable>
+        <Link href="/modal" asChild>
+          <Pressable style={styles.iconButton}>
+            <IconSymbol name="line.3.horizontal" size={24} color="#FFFFFF" />
+          </Pressable>
+        </Link>
 
         <View style={styles.headerBadge}>
           <IconSymbol name={section?.icon ?? 'doc.text.fill'} size={18} color="#FFFFFF" />
@@ -72,6 +73,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 20,
+    backgroundColor: 'rgba(255,255,255,0.14)',
+  },
+  iconButton: {
+    width: 40,
+    height: 40,
+    borderRadius: 24,
+    alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: 'rgba(255,255,255,0.14)',
   },
 });

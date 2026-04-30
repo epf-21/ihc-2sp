@@ -1,4 +1,4 @@
-import { Link } from 'expo-router';
+import { Link, useRouter } from 'expo-router';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -26,6 +26,7 @@ function hasFeatureRoute(slug: string): slug is FeatureSlug {
 export default function ModalScreen() {
     const colorScheme = useColorScheme() ?? 'light';
     const palette = Colors[colorScheme];
+    const router = useRouter()
 
     return (
         <SafeAreaView style={[styles.safeArea, { backgroundColor: palette.background }]}>
@@ -38,11 +39,9 @@ export default function ModalScreen() {
                             <Text style={styles.brandMarkCaption}>Menu principal</Text>
                         </View>
 
-                        <Link href="/" dismissTo asChild>
-                            <Pressable style={styles.closeButton}>
-                                <IconSymbol name="xmark" size={18} color="#FFFFFF" />
-                            </Pressable>
-                        </Link>
+                        <Pressable style={styles.closeButton} onPress={() => router.back()} >
+                            <IconSymbol name="xmark" size={18} color="#FFFFFF" />
+                        </Pressable>
                     </View>
 
                     <View style={styles.profileRow}>

@@ -6,6 +6,7 @@ import { IconSymbol } from '@/components/ui/icon-symbol';
 import { getSectionBySlug } from '@/constants/elfec';
 import { Colors, Fonts } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
+import TitleSection from '@/components/TitleSection';
 
 type ElectrolineraOption = {
     id: string;
@@ -49,14 +50,12 @@ export default function ElectrolineasScreen() {
     return (
         <SafeAreaView style={[styles.safeArea, { backgroundColor: palette.background }]}>
             <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
-                <View style={[styles.header, { backgroundColor: section?.accent ?? palette.tint }]}>
-                    <View style={styles.headerTop}>
-                        <IconSymbol name={section?.icon ?? 'bolt.fill'} size={24} color="#FFFFFF" />
-                        <Text style={styles.headerTag}>Servicios rápidos</Text>
-                    </View>
-                    <Text style={styles.headerTitle}>Electrolineras</Text>
-                    <Text style={styles.headerSubtitle}>Canales de contacto y servicios rápidos</Text>
-                </View>
+                <TitleSection
+                    sectionTitle="Electrolineas"
+                    title="Servicios rápidos"
+                    subtitle="Canales de contacto y servicios rápidos"
+                    slug="electrolineas"
+                />
 
                 <View style={styles.optionsContainer}>
                     {options.map((option) => (
@@ -72,7 +71,6 @@ export default function ElectrolineasScreen() {
                     ))}
                 </View>
 
-                {/* QR Section */}
                 <View style={styles.qrSection}>
                     <View style={[styles.qrContainer, { backgroundColor: section?.accent ?? palette.tint }]}>
                         <View style={styles.qrPlaceholder}>
@@ -94,11 +92,6 @@ export default function ElectrolineasScreen() {
 const styles = StyleSheet.create({
     safeArea: { flex: 1 },
     content: { paddingHorizontal: 16, paddingBottom: 24, gap: 24 },
-    header: { borderRadius: 28, padding: 18, minHeight: 160, justifyContent: 'space-between', marginBottom: 8 },
-    headerTop: { flexDirection: 'row', alignItems: 'center', gap: 8 },
-    headerTag: { color: '#FFFFFF', fontSize: 12, fontWeight: '700', textTransform: 'uppercase', letterSpacing: 0.8 },
-    headerTitle: { color: '#FFFFFF', fontSize: 28, lineHeight: 32, fontWeight: '800', fontFamily: Fonts.rounded, marginTop: 12 },
-    headerSubtitle: { color: 'rgba(255,255,255,0.9)', fontSize: 13, lineHeight: 18, marginTop: 6 },
     optionsContainer: {
         gap: 12,
     },

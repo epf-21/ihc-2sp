@@ -2,16 +2,14 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { NotificationSection } from '@/components/notification-section';
-import { IconSymbol } from '@/components/ui/icon-symbol';
-import { getSectionBySlug } from '@/constants/elfec';
 import { Colors, Fonts } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import ButtonHome from '@/components/Button';
+import TitleSection from '@/components/TitleSection';
 
 export default function NotificacionesScreen() {
     const colorScheme = useColorScheme() ?? 'light';
     const palette = Colors[colorScheme];
-    const section = getSectionBySlug('notificaciones');
 
     const notificationsData = {
         cortes: [
@@ -31,16 +29,13 @@ export default function NotificacionesScreen() {
     return (
         <SafeAreaView style={[styles.safeArea, { backgroundColor: palette.background }]}>
             <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
-                <View style={[styles.header, { backgroundColor: section?.accent ?? palette.tint }]}>
-                    <View style={styles.headerTop}>
-                        <IconSymbol name={section?.icon ?? 'bell.fill'} size={24} color="#FFFFFF" />
-                        <Text style={styles.headerTag}>Centro de notificaciones</Text>
-                    </View>
-                    <Text style={styles.headerTitle}>Notificaciones</Text>
-                    <Text style={styles.headerSubtitle}>Alertas, recordatorios y novedades</Text>
-                </View>
+                <TitleSection
+                    sectionTitle="Notificaciones"
+                    title="Centro de notificaciones"
+                    subtitle="Alertas, recordatorios y novedades"
+                    slug="notificaciones"
+                />
 
-                {/* Sección Cortes e Información */}
                 <View style={styles.sectionContainer}>
                     <NotificationSection
                         title="Cortes e información"
@@ -60,7 +55,6 @@ export default function NotificacionesScreen() {
                     </NotificationSection>
                 </View>
 
-                {/* Sección Cuentas */}
                 <View style={styles.sectionContainer}>
                     <NotificationSection
                         title="Cuentas"
@@ -83,7 +77,6 @@ export default function NotificacionesScreen() {
                     </NotificationSection>
                 </View>
 
-                {/* Sección Reclamos */}
                 <View style={styles.sectionContainer}>
                     <NotificationSection
                         title="Reclamos"
@@ -115,11 +108,6 @@ export default function NotificacionesScreen() {
 const styles = StyleSheet.create({
     safeArea: { flex: 1 },
     content: { paddingHorizontal: 16, paddingBottom: 24, gap: 16 },
-    header: { borderRadius: 28, padding: 18, minHeight: 160, justifyContent: 'space-between' },
-    headerTop: { flexDirection: 'row', alignItems: 'center', gap: 8 },
-    headerTag: { color: '#FFFFFF', fontSize: 12, fontWeight: '700', textTransform: 'uppercase', letterSpacing: 0.8 },
-    headerTitle: { color: '#FFFFFF', fontSize: 28, lineHeight: 32, fontWeight: '800', fontFamily: Fonts.rounded, marginTop: 12 },
-    headerSubtitle: { color: 'rgba(255,255,255,0.9)', fontSize: 13, lineHeight: 18, marginTop: 6 },
     sectionContainer: {
         backgroundColor: '#FFFFFF',
         borderRadius: 24,

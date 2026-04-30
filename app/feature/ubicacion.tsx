@@ -4,9 +4,9 @@ import MapView, { Marker } from 'react-native-maps';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { IconSymbol } from '@/components/ui/icon-symbol';
-import { getSectionBySlug } from '@/constants/elfec';
 import { Colors, Fonts } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
+import TitleSection from '@/components/TitleSection';
 
 type Location = {
     id: string;
@@ -21,10 +21,8 @@ type Location = {
 export default function UbicacionScreen() {
     const colorScheme = useColorScheme() ?? 'light';
     const palette = Colors[colorScheme];
-    const section = getSectionBySlug('ubicacion');
     const [selectedType, setSelectedType] = useState<'all' | 'oficina' | 'punto_pago' | 'atencion'>('all');
 
-    // Coordenadas aproximadas de La Paz, Bolivia
     const initialRegion = {
         latitude: -16.4897,
         longitude: -68.1093,
@@ -110,13 +108,13 @@ export default function UbicacionScreen() {
 
     return (
         <SafeAreaView style={[styles.safeArea, { backgroundColor: palette.background }]}>
-            <View style={[styles.header, { backgroundColor: section?.accent ?? palette.tint }]}>
-                <View style={styles.headerTop}>
-                    <IconSymbol name={section?.icon ?? 'map.fill'} size={24} color="#FFFFFF" />
-                    <Text style={styles.headerTag}>Puntos de servicio</Text>
-                </View>
-                <Text style={styles.headerTitle}>Servicios de Ubicación</Text>
-                <Text style={styles.headerSubtitle}>Encuentra nuestros puntos de atención cercanos</Text>
+            <View style={[styles.content]}>
+                <TitleSection
+                    sectionTitle="Servicios de ubicación"
+                    title="Puntos de servicio"
+                    subtitle="Encuentra nuestros puntos de atención cercanos"
+                    slug="ubicacion"
+                />
             </View>
 
             <MapView
@@ -185,35 +183,7 @@ export default function UbicacionScreen() {
 
 const styles = StyleSheet.create({
     safeArea: { flex: 1 },
-    header: {
-        paddingHorizontal: 16,
-        paddingVertical: 16,
-        gap: 8,
-    },
-    headerTop: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        gap: 8,
-    },
-    headerTag: {
-        color: '#FFFFFF',
-        fontSize: 12,
-        fontWeight: '700',
-        textTransform: 'uppercase',
-        letterSpacing: 0.8,
-    },
-    headerTitle: {
-        color: '#FFFFFF',
-        fontSize: 28,
-        lineHeight: 32,
-        fontWeight: '800',
-        fontFamily: Fonts.rounded,
-    },
-    headerSubtitle: {
-        color: 'rgba(255,255,255,0.9)',
-        fontSize: 13,
-        lineHeight: 18,
-    },
+    content: { paddingHorizontal: 16, paddingBottom: 16, gap: 16 },
     map: {
         height: 280,
     },
